@@ -1,6 +1,7 @@
 baseURL = 'https://erazemk.com/'
 languageCode = 'en'
 title = 'Erazem Kokot'
+disableKinds = ['rss', 'categories', 'tags']
 
 [params]
     author = 'Erazem Kokot'
