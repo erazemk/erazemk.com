@@ -16,7 +16,7 @@
 * on small devices, paste the mobile query code up in the buttons section and style it
 * there.
 */
-@import url('css/barebones.css');
+@import url('barebones.css');
 
 @media screen and (prefers-color-scheme: dark) {
     :root {
