@@ -1,0 +1,28 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+    <meta name="description" content="{{ block "description" . }}{{ .Site.Params.Description }}{{ end }}">
+    <meta name="author" content="{{ .Site.Params.Author }}">
+
+    <meta property="og:title" content="{{ block "title" . }}{{ .Site.Title }}{{ end }}">
+    <meta property="og:description" content="{{ block "description" . }}{{ .Site.Params.Description }}{{ end }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ TODO }}">
+
+    <link rel="stylesheet" href="{{ TODO }}">
+    <link rel="canonical" href="{{ TODO }}">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/icons/site.webmanifest">
+
+    <!-- Boxicons are used for the social icons - https://boxicons.com -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- TODO: Add RSS/Atom feed -->
+
+    <!-- GoatCounter is a page view counter - https://goatcounter.com -->
+    <script data-goatcounter="https://erazemk.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</head>

@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{ with .Site.Params }}
+<div class="landingpage">
+    <div class="grid-container fivetoseven" role="main">
+        <div class="item" aria-label="profile picture">
+            <section id="avatar">
+                <img class="avatar" src="{{ .Avatar }}" alt="My profile picture">
+            </section>
+        </div>
+        <div class="grid-container full autocenter">
+            <section id="bio" aria-label="biography">
+                <h1 class="h3-like" aria-level="1" aria-label="name">{{ .Author }}</h1>
+                <p class="reset-margin" title="About" aria-label="about">{{ .Bio }}</p>
+            </section>
+            <section id="links" aria-label="social links">
+                <div class="icons" aria-label="links">
+                    <h2 class="h3-like" aria-label="link icons">
+                        {{ with .Email }}}
+                        <a class="icon" href="mailto:{{ . }}" target="_blank" rel="noopener">
+                            <i class="bx bx-envelope" title="Email" aria-label="email me"></i>
+                        </a>
+                        {{ end }}
+                        {{ with .PGP }}
+                        <a class="icon" href="https://keys.openpgp.org/vks/v1/by-fingerprint/{{ . }}" target="_blank" rel="noopener">
+                            <i class="bx bx-lock" title="PGP key" aria-label="my pgp key"></i>
+                        </a>
+                        {{ end }}
+                        {{ range $social, $link := .Social }}
+                        <a class="icon" href="{{ $link | safeURL }}" target="_blank" rel="noopener">
+                            <i class="bx bxl-{{ $social | strings.ToLower }}" title="My {{ $social }}" aria-label="my {{ $social }}"></i>
+                        </a>
+                        {{ end }}
+                    </h2>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{{ end }}
+{{ end }}
