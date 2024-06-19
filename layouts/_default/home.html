@@ -10,12 +10,15 @@
         <div class="grid-container full autocenter">
             <section id="bio" aria-label="biography">
                 <h1 class="h3-like" aria-level="1" aria-label="name">{{ .Author }}</h1>
-                <p class="reset-margin" title="About" aria-label="about">{{ .Bio }}</p>
+                <p class="reset-margin" title="About" aria-label="about">
+                    <b>{{ .Job }}</b><br>
+                    {{ .Bio | markdownify }}
+                </p>
             </section>
-            <section id="links" aria-label="social links">
+            <section id="contact" aria-label="social links">
                 <div class="icons" aria-label="links">
                     <h2 class="h3-like" aria-label="link icons">
-                        {{ with .Email }}}
+                        {{ with .Email }}
                         <a class="icon" href="mailto:{{ . }}" target="_blank" rel="noopener">
                             <i class="bx bx-envelope" title="Email" aria-label="email me"></i>
                         </a>
