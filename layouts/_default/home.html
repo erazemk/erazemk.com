@@ -4,8 +4,8 @@
     <div class="grid-container fivetoseven" role="main">
         <div class="item" aria-label="profile picture">
             <section id="avatar">
-                <!-- TODO: Compress image based on the deployed size -->
-                <img class="avatar" src="{{ .Avatar | absURL }}" alt="My profile picture">
+                {{ $avatar := (resources.Get "res/avatar.png").Fit "256x256" | resources.Copy "res/avatar.png" }}
+                <img class="avatar" src="{{ $avatar.Permalink }}" alt="My profile picture">
             </section>
         </div>
         <div class="grid-container full autocenter">
