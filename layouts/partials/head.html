@@ -1,18 +1,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
-    <meta name="description" content="{{ block "description" . }}{{ .Site.Params.Description }}{{ end }}">
+    <base href="{{ .Site.BaseURL }}">
+
+    <title>{{ .Title }}</title>
+
+    <meta name="description" content="{{ .Site.Params.Description }}">
     <meta name="author" content="{{ .Site.Params.Author }}">
 
-    <meta property="og:title" content="{{ block "title" . }}{{ .Site.Title }}{{ end }}">
-    <meta property="og:description" content="{{ block "description" . }}{{ .Site.Params.Description }}{{ end }}">
+    <!-- Open Graph Protocol -->
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.Description }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ TODO }}">
+    <meta property="og:url" content="{{ .Permalink }}">
 
-    <link rel="stylesheet" href="{{ TODO }}">
-    <link rel="canonical" href="{{ TODO }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="stylesheet" href="/css/vncnt.css" type="text/css">
+
+    <!-- Favicons -->
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
     <link rel="manifest" href="/icons/site.webmanifest">
