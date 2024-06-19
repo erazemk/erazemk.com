@@ -1,0 +1,15 @@
+baseURL = 'https://erazemk.com/'
+languageCode = 'en'
+title = 'Erazem Kokot'
+
+[params]
+    author = 'Erazem Kokot'
+    description = 'My website / landing page'
+    bio = 'Go developer / Backend engineer'
+    avatar = '/res/avatar.png'
+    email = 'mail@erazemk.com'
+
+    [params.links]
+        github = 'https://github.com/erazemk'
+        linkedin = 'https://www.linkedin.com/in/erazemk/'
+        pgp = ''
