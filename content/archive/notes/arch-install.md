@@ -12,16 +12,13 @@ These notes outline my Arch installation with the following features(/tags):
 * Full disk encryption (LUKS) for both disks
 * Laptop-specific features (hybrid sleep, tlp, automatic locking on lid close, ...)
 
-**TODO:**
-* Auto-decrypt 2nd disk
-
 ## Pre-installation
 
 Set the keyboard layout: `loadkeys slovene`
 
 Check if booted in EFI mode: `ls /sys/firmware/efi/efivars` (should be non-empty)
 
-Connect to WiFi: `iwctl`
+Connect to Wi-Fi: `iwctl`
 
 Update the system clock: `timedatectl set-ntp true`
 
@@ -37,7 +34,7 @@ Wanted layout:
 ```
 Install BTRFS utils: `pacman -S btrfs-progs`
 
-Partition the disks with `fdisk` (make sure to use GPT): ...
+Partition the disks with `fdisk` (make sure to use GPT partitioning)
 
 Format the boot partition: `mkfs.vfat -F32 -n boot /dev/sda1`
 
@@ -196,7 +193,7 @@ Exec = /usr/bin/bootctl update
 
 ### Automatic disk decryption on boot
 
-To decrypt the 2nd (/home) disk automatically edit the crypttab: `nvim /etc/crypttab`:
+To decrypt the second (/home) disk automatically edit the crypttab: `nvim /etc/crypttab`:
 ```
 arch-root    UUID=<$disk-uuid>   none    luks,discard
 arch-home    UUID=<$disk-uuid>   none    luks

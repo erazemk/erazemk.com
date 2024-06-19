@@ -7,5 +7,5 @@ draft = true
 on [SpigotMC](https://www.spigotmc.org/).
 
 It is meant to be run on a Raspberry Pi 3 or later and features a clean web user interface, through which parents
-(our target audience) can easily set up a LAN (Local Area Network) server for their kids to connect to though PiCraft's
+(our intended audience) can easily set up a LAN (Local Area Network) server for their kids to connect to though PiCraft's
 wireless hotspot.

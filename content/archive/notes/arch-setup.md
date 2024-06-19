@@ -5,15 +5,6 @@ draft = true
 
 These notes outline my Arch post-installation with Sway.
 
-Software list: [arch-packages.txt](/arch-packages.txt)
-
-AUR software list: [arch-aur-packages.txt](/arch-aur-packages.txt)
-
-**TODO:**
-* [Plymouth](https://wiki.archlinux.org/index.php/Plymouth) config
-* Lock screen config
-* Login manager (ly)
-
 ### Screen locking
 
 Add a service to lock the screen before suspending: `nvim /etc/systemd/system/screenlock.service`:
@@ -45,7 +36,7 @@ gpasswd -a <user> bumblebee
 systemctl enable bumblebeed
 ```
 
-(system changes - restart system afterwards)
+(system changes, restart system afterward)
 
 ### CUPS
 
