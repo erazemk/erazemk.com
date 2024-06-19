@@ -16,12 +16,13 @@
     <meta property="og:url" content="{{ .Permalink }}">
 
     <link rel="canonical" href="{{ .Permalink }}">
-    <link rel="stylesheet" href="/css/vncnt.css" type="text/css">
+    <link rel="stylesheet" href="{{ "/css/normalize.css" | absURL }}" type="text/css">
+    <link rel="stylesheet" href="{{ "/css/vncnt.css" | absURL }}" type="text/css">
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
-    <link rel="manifest" href="/icons/site.webmanifest">
+    <link rel="shortcut icon" href={{ "/favicon.ico" | absURL }}>
+    <link rel="apple-touch-icon" href={{ "/icons/apple-touch-icon.png" | absURL }}>
+    <link rel="manifest" href={{ "/icons/site.webmanifest" | absURL }}>
 
     <!-- Boxicons are used for the social icons - https://boxicons.com -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

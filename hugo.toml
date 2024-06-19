@@ -9,7 +9,7 @@ title = 'Erazem Kokot'
     bio = "Fan of Go, Docker/Podman, Linux and FPGAs, but constantly learning new stuff."
     avatar = '/res/avatar.png'
     email = 'mail@erazemk.com'
-    pgp = '1234'
+    pgp = '45CADCF24B218D7F155400B0ADE33D31CEE4BEFC'
 
     [params.social]
         GitHub = 'https://github.com/erazemk'
