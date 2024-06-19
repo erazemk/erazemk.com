@@ -1,6 +1,7 @@
 baseURL = 'https://erazemk.com/'
 languageCode = 'en'
 title = 'Erazem Kokot'
+enableRobotsTXT = true
 disableKinds = ['rss', 'categories', 'tags', 'sitemap']
 
 [params]
