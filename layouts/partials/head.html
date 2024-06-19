@@ -1,15 +1,12 @@
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <base href="{{ .Site.BaseURL }}">
-
     <title>{{ .Title }}</title>
 
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="{{ .Site.Params.Description }}">
     <meta name="author" content="{{ .Site.Params.Author }}">
 
-    <!-- Open Graph Protocol -->
     <meta property="og:title" content="{{ .Site.Title }}">
     <meta property="og:description" content="{{ .Site.Params.Description }}">
     <meta property="og:type" content="website">
@@ -19,17 +16,10 @@
     <link rel="stylesheet" href="{{ "/css/normalize.css" | absURL }}" type="text/css">
     <link rel="stylesheet" href="{{ "/css/vncnt.css" | absURL }}" type="text/css">
 
-    <!-- Favicons -->
-    <link rel="icon" href={{ "/favicon.ico" | absURL }}>
-    <link rel="apple-touch-icon" href={{ "/icons/apple-touch-icon.png" | absURL }}>
-    <link rel="manifest" href={{ "/icons/site.webmanifest" | absURL }}>
+    <link rel="icon" href="{{ "/favicon.ico" | absURL }}">
+    <link rel="apple-touch-icon" href="{{ "/icons/apple-touch-icon.png" | absURL }}">
+    <link rel="manifest" href="{{ "/icons/site.webmanifest" | absURL }}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-    <!-- Boxicons are used for the social icons - https://boxicons.com -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <!-- TODO: Add RSS/Atom feed -->
-
-    <!-- GoatCounter is a page view counter - https://goatcounter.com -->
-    <script data-goatcounter="https://erazemk.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://erazemk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
