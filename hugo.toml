@@ -2,13 +2,14 @@ baseURL = 'https://erazemk.com/'
 languageCode = 'en'
 title = 'Erazem Kokot'
 
-[Params]
-    Author = 'Erazem Kokot'
-    Description = 'My website / landing page'
-    Bio = 'Go developer / Backend engineer'
-    Avatar = '/res/avatar.png'
-    Email = 'mail@erazemk.com'
-    PGP = ''
+[params]
+    author = 'Erazem Kokot'
+    description = 'My website / landing page'
+    job = 'Go developer / Backend engineer'
+    bio = "Fan of Go, Docker/Podman, Linux and FPGAs, but constantly learning new stuff."
+    avatar = '/res/avatar.png'
+    email = 'mail@erazemk.com'
+    pgp = '1234'
 
     [params.social]
         GitHub = 'https://github.com/erazemk'
