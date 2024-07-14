@@ -18,10 +18,28 @@
     <link rel="apple-touch-icon" href="{{ "/icons/apple-touch-icon.png" | absURL }}">
     <link rel="manifest" href="{{ "/icons/site.webmanifest" | absURL }}">
 
-    <link rel="stylesheet" href="{{ "/css/normalize.css" | absURL }}" type="text/css" >
-    <link rel="stylesheet" href="{{ "/css/vncnt.css" | absURL }}" type="text/css">
+    <!-- Minify the CSS files -->
+    {{- $barebonesCSS := resources.Get "css/barebones.css" | minify -}}
+    {{- $normalizeCSS := resources.Get "css/normalize.css" | minify -}}
+    {{- $vncntCSS := resources.Get "css/vncnt.css" | minify -}}
+    {{- $boxiconsCSS := resources.Get "css/boxicons.css" | minify -}}
 
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" onload="this.media='all'" rel="stylesheet">
+    <!-- Copy the CSS files -->
+    {{- $barebonesCSS := resources.Copy "css/barebones.css" $barebonesCSS -}}
+    {{- $normalizeCSS := resources.Copy "css/normalize.css" $normalizeCSS -}}
+    {{- $vncntCSS := resources.Copy "css/vncnt.css" $vncntCSS -}}
+    {{- $boxiconsCSS := resources.Copy "css/boxicons.css" $boxiconsCSS -}}
 
-    <script data-goatcounter="https://erazemk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <link rel="stylesheet" href="{{ $normalizeCSS.Permalink }}" type="text/css">
+    <link rel="stylesheet" href="{{ $barebonesCSS.Permalink }}" type="text/css">
+    <link rel="stylesheet" href="{{ $vncntCSS.Permalink }}" type="text/css">
+    <link rel="stylesheet" href="{{ $boxiconsCSS.Permalink }}" onload="this.media='all'">
+
+    <!-- Minify the JS files -->
+    {{- $countJS := resources.Get "js/count.js" | minify -}}
+
+    <!-- Copy the JS files -->
+    {{- $countJS := resources.Copy "js/count.js" $countJS -}}
+
+    <script data-goatcounter="https://erazemk.goatcounter.com/count" async src="{{ $countJS.Permalink }}"></script>
 </head>
