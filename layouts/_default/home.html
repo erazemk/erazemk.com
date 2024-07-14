@@ -21,17 +21,17 @@
                             <h2 class="h3-like" aria-label="link icons">
                                 {{- with .Email }}
                                 <a class="icon" href="mailto:{{ . }}" target="_blank" rel="noopener">
-                                    <i class="bx bx-lg bx-border bx-envelope" title="Email" aria-label="email me"></i>
+                                    <i class="bx bx-lg bx-border bx-envelope" title="Email"></i>
                                 </a>
                                 {{- end }}
                                 {{- with .PGP }}
                                 <a class="icon" href="https://keys.openpgp.org/vks/v1/by-fingerprint/{{ . }}" target="_blank" rel="noopener">
-                                    <i class="bx bx-lg bx-border bx-lock" title="PGP key" aria-label="my pgp key"></i>
+                                    <i class="bx bx-lg bx-border bx-lock" title="PGP key"></i>
                                 </a>
                                 {{- end }}
                                 {{- range $social, $link := .Social }}
                                 <a class="icon" href="{{ $link | safeURL }}" target="_blank" rel="noopener">
-                                    <i class="bx bx-lg bx-border bxl-{{ $social | strings.ToLower }}" title="My {{ $social }}" aria-label="my {{ $social }}"></i>
+                                    <i class="bx bx-lg bx-border bxl-{{ $social | strings.ToLower }}" title="My {{ $social }}"></i>
                                 </a>
                                 {{- end }}
                             </h2>
