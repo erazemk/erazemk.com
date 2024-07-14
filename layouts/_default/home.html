@@ -5,7 +5,7 @@
                 <div class="item" aria-label="profile picture">
                     <section id="avatar">
                         {{- $avatar := (resources.Get "res/avatar.png").Fit "256x256" | resources.Copy "res/avatar.png" }}
-                        <img class="avatar" src="{{ $avatar.Permalink }}" alt="My profile picture" width="256" height="256">
+                        <img class="avatar" src="{{ $avatar.Permalink }}" alt="My profile picture">
                     </section>
                 </div>
                 <div class="grid-container full autocenter">
