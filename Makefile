@@ -1,7 +1,4 @@
-default:
-	@$(MAKE) boxicons
-	@$(MAKE) css
-	@$(MAKE) goatcounter
+default: boxicons css goatcounter
 
 boxicons:
 	curl -sL --output-dir assets/css/ \
