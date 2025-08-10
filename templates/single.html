@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ get_url(path='css/page.css') | safe }}">
+{% endblock extra_css %}
+
+{% block content %}
+<article class="content-page">
+    <header class="content-header">
+        <!-- Page title with navigation -->
+        <div class="content-title-line">
+            <div class="content-title-group">
+                <a href="{{ get_url(path=page.ancestors | last) | safe | replace(from="_index.md", to="") }}" class="back-button" aria-label="Back to list">
+                    <i class="bx bx-arrow-back" aria-hidden="true"></i>
+                </a>
+                
+                <a href="{{ get_url(path="/") | safe }}" class="home-button" aria-label="Go to home page">
+                    <i class="bx bx-home" aria-hidden="true"></i>
+                </a>
+                
+                <h1 class="content-title">{{ page.title }}</h1>
+            </div>
+            
+            <hr class="header-separator">
+        </div>
+        
+        {# Dynamic metadata based on frontmatter #}
+        <div class="content-meta">
+            {# Show date if available #}
+            {%- if page.date %}
+            <time datetime="{{ page.date | date(format="%Y-%m-%d") }}" class="content-date" aria-label="Published date">
+                <i class="bx bx-calendar" aria-hidden="true"></i>
+                {{ page.date | date(format="%B %d, %Y") }}
+            </time>
+            {%- endif %}
+            
+            {# Show reading time if page has reading_time #}
+            {%- if page.reading_time %}
+            <span class="content-reading-time" aria-label="Estimated reading time">
+                <i class="bx bx-time" aria-hidden="true"></i>
+                {{ page.reading_time }} min read
+            </span>
+            {%- endif %}
+        </div>
+        
+        {# External link if available #}
+        {%- if page.extra.link and page.extra.link != "" %}
+        <div class="content-link-container">
+            <a href="{{ page.extra.link | safe }}" 
+               class="external-content-link" 
+               aria-label="Visit {{ page.title }}"
+                <i class="bx bx-link-external" aria-hidden="true"></i>
+                View Content
+            </a>
+        </div>
+        {%- endif %}
+    </header>
+    
+    <!-- Page content -->
+    <div class="content-body">
+        {{ page.content | safe }}
+    </div>
+</article>
+{% endblock content %}
