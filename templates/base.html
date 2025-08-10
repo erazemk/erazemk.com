@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="{{ config.default_language | default(value="en") }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {%- if page %}
+    <title>{{ page.title }} - {{ config.title }}</title>
+    <meta name="description" content="{{ page.description | default(value=config.extra.description) }}">
+    {%- elif section %}
+    <title>{{ section.title }} - {{ config.title }}</title>
+    <meta name="description" content="{{ section.description | default(value=config.extra.description) }}">
+    {%- else %}
+    <title>{{ config.title }}</title>
+    <meta name="description" content="{{ config.description }}">
+    {%- endif %}
+
+    <!-- SEO and Social Meta Tags -->
+    <meta name="author" content="{{ config.author }}">
+    <meta name="robots" content="index, follow">
+    {%- if current_url %}
+    <link rel="canonical" href="{{ current_url | safe }}">
+    {%- endif %}
+
+    {%- if page %}
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.description | default(value=config.extra.description) }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ page.permalink | safe }}">
+    {%- if page.date %}
+    <meta property="article:published_time" content="{{ page.date | date(format="%Y-%m-%d") }}">
+    {%- endif %}
+    {%- elif section %}
+    <meta property="og:title" content="{{ section.title }}">
+    <meta property="og:description" content="{{ section.description | default(value=config.extra.description) }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ section.permalink | safe }}">
+    {%- else %}
+    <meta property="og:title" content="{{ config.title }}">
+    <meta property="og:description" content="{{ config.extra.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ config.base_url | safe }}">
+    {%- endif %}
+    <meta property="og:site_name" content="{{ config.title }}">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{%- if page %}{{ page.title }} - {{ config.title }}{%- elif section %}{{ section.title }} - {{ config.title }}{%- else %}{{ config.title }}{%- endif %}">
+    <meta name="twitter:description" content="{%- if page %}{{ page.description | default(value=config.extra.description) }}{%- elif section %}{{ section.description | default(value=config.extra.description) }}{%- else %}{{ config.extra.description }}{%- endif %}">
+
+    <!-- Atom Feed Links -->
+    {%- if config.extra.show_posts %}
+    <link rel="alternate" type="application/atom+xml" title="{{ config.title }} - Posts" href="{{ get_url(path="posts/atom.xml") | safe }}">
+    {%- endif %}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ get_url(path="favicon.ico") | safe }}">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ get_url(path="css/base.css") | safe }}">
+    {% block extra_css %}{% endblock extra_css %}
+
+    <!-- Boxicons for icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" crossorigin="anonymous">
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#FAF9F5" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#2A2925" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+    <!-- Main content area -->
+    <main role="main">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <!-- GoatCounter Analytics - loaded asynchronously/deferred -->
+    {%- set goat_domain = config.base_url | replace(from="https://", to="") | replace(from="http://", to="") | split(pat="/") | first %}
+    <script data-goatcounter="https://{{ goat_domain }}.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

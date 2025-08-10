@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ get_url(path='css/list.css') | safe }}">
+{% endblock extra_css %}
+
+{% block content %}
+<section class="section-list-page">
+    <header class="section-header">
+        <!-- Navigation controls -->
+        <div class="section-header-content">
+            <div class="section-title-line">
+                <div class="section-title-group">
+                    <a href="{{ get_url(path="/") | safe }}" class="back-button" aria-label="Back to home">
+                        <i class="bx bx-arrow-back" aria-hidden="true"></i>
+                    </a>
+
+                    <h1>{{ section.title }}</h1>
+
+                    <!-- RSS feed button - only show if feeds are generated -->
+                    {%- if section.generate_feeds %}
+                    <a href="{{ get_url(path=section.path ~ "atom.xml") | safe }}"
+                       class="feed-button"
+                       aria-label="Subscribe to Atom feed"
+                       title="Subscribe to Atom feed">
+                        <i class="bx bx-rss" aria-hidden="true"></i>
+                    </a>
+                    {%- endif %}
+                </div>
+
+                <hr class="header-separator">
+            </div>
+        </div>
+    </header>
+
+    <!-- Content list -->
+    {%- if paginator %}
+        {%- set pages_to_show = paginator.pages %}
+    {%- else %}
+        {%- set pages_to_show = section.pages %}
+    {%- endif %}
+
+    {%- if pages_to_show %}
+    <div class="section-content-grid">
+        {%- for page in pages_to_show %}
+        <article class="content-card">
+            {# Determine if this should link to external URL or internal content #}
+            {%- if page.extra.link and page.extra.link != "" %}
+                {# Use external link from frontmatter #}
+                {%- set page_url = page.extra.link %}
+                {%- set is_external = true %}
+            {%- else %}
+                {# Link to internal page #}
+                {%- set page_url = page.permalink %}
+                {%- set is_external = false %}
+            {%- endif %}
+
+            <a href="{{ page_url | safe }}"
+               class="content-card-link"
+               {%- if is_external %} target="_blank" rel="noopener"{%- endif %}
+               aria-label="{%- if is_external %}Visit {{ page.title }}{%- else %}Read {{ page.title }}{%- endif %}">
+                <header class="content-card-header">
+                    <h2 class="content-card-title">{{ page.title }}</h2>
+
+
+                    {# Dynamic metadata based on frontmatter #}
+                    <div class="content-meta">
+                        {# Show date if available #}
+                        {%- if page.date %}
+                        <time datetime="{{ page.date | date(format="%Y-%m-%d") }}" class="content-date">
+                            <i class="bx bx-calendar" aria-hidden="true"></i>
+                            {{ page.date | date(format="%B %d, %Y") }}
+                        </time>
+                        {%- endif %}
+
+                        {# Show reading time if section has show_reading_time enabled and page has reading_time #}
+                        {%- if section.extra.show_reading_time and page.reading_time %}
+                        <span class="reading-time">
+                            <i class="bx bx-time" aria-hidden="true"></i>
+                            {{ page.reading_time }} min read
+                        </span>
+                        {%- endif %}
+                    </div>
+                </header>
+
+                {%- if page.description %}
+                <p class="content-description">{{ page.description }}</p>
+                {%- endif %}
+            </a>
+        </article>
+        {%- endfor %}
+    </div>
+    {%- else %}
+    <div class="no-content">
+        <p>No content yet. Check back later!</p>
+    </div>
+    {%- endif %}
+</section>
+{% endblock content %}

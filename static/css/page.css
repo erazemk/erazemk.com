@@ -1,0 +1,343 @@
+/* Page CSS - Styles for individual content pages */
+/* Imports base styles */
+@import url('base.css');
+
+/* ========================================
+   Page Layout
+   ======================================== */
+
+/* Enhanced spacing for page content - centered like list page but with less margins */
+.content-page {
+  max-width: 850px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-xs);
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   Post Page Styles
+   ======================================== */
+
+.content-header {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.content-title-line {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  width: 100%;
+  margin-bottom: var(--spacing-lg);
+}
+
+.content-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.content-title-group h1 {
+  margin: 0;
+  font-size: var(--font-size-xxxl);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.content-title-group .back-button,
+.content-title-group .home-button {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--font-size-xxxl);
+  transition: color var(--transition-fast);
+}
+
+.content-title-group .back-button:hover,
+.content-title-group .back-button:focus,
+.content-title-group .home-button:hover,
+.content-title-group .home-button:focus {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.header-separator {
+  flex-grow: 1;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+  height: 1px;
+}
+
+.content-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+}
+
+.content-meta time {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.reading-time {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.reading-time i {
+  font-size: var(--font-size-small);
+}
+
+/* ========================================
+   Post Content Styles
+   ======================================== */
+
+.content-body {
+  line-height: 1.7;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.content-body > * {
+  margin-bottom: var(--spacing-lg);
+}
+
+.content-body h1,
+.content-body h2,
+.content-body h3,
+.content-body h4,
+.content-body h5,
+.content-body h6 {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+}
+
+.content-body h1:first-child,
+.content-body h2:first-child,
+.content-body h3:first-child {
+  margin-top: 0;
+}
+
+.content-body p {
+  margin-bottom: var(--spacing-lg);
+}
+
+.content-body ul,
+.content-body ol {
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-lg);
+}
+
+.content-body li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.content-body li:last-child {
+  margin-bottom: 0;
+}
+
+.content-body blockquote {
+  border-left: 4px solid var(--color-accent);
+  padding-left: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+  font-style: italic;
+  color: var(--color-text-muted);
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius-small);
+}
+
+.content-body code {
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-small);
+  font-family: 'SFMono-Regular', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.875em;
+  border: 1px solid var(--color-border);
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.content-body pre {
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  margin: var(--spacing-lg) 0;
+  border: 1px solid var(--color-border);
+  max-width: 100%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.content-body pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  font-size: var(--font-size-small);
+}
+
+.content-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-lg) 0;
+  font-size: var(--font-size-small);
+}
+
+.content-body table th,
+.content-body table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.content-body table th {
+  font-weight: 600;
+  background-color: var(--color-card-bg);
+}
+
+.content-body hr {
+  border: none;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--spacing-xxl) 0;
+}
+
+/* ========================================
+   Project Page Specific Styles
+   ======================================== */
+
+.content-link-container {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.external-content-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-accent);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius-small);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.external-content-link:hover,
+.external-content-link:focus {
+  background-color: var(--color-accent-hover);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.external-content-link i {
+  font-size: var(--font-size-base);
+}
+
+/* ========================================
+   Navigation Controls (old styles removed - now inline with title)
+   ======================================== */
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .content-page {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .content-page {
+    padding: var(--spacing-xl) var(--spacing-xl);
+  }
+
+  .content-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .content-title-group {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .content-title-group h1 {
+    font-size: var(--font-size-xxl);
+  }
+
+  .content-title-group .back-button,
+  .content-title-group .home-button {
+    font-size: var(--font-size-xxl);
+  }
+}
+
+@media (max-width: 600px) {
+  .content-page {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .content-body pre {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-small);
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+
+  .content-body code {
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+
+  .content-body table {
+    font-size: 0.75rem;
+  }
+
+  .content-body table th,
+  .content-body table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .content-page {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .content-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .content-title-line {
+    gap: var(--spacing-md);
+  }
+
+  .content-body ul,
+  .content-body ol {
+    padding-left: var(--spacing-md);
+  }
+
+  .content-body blockquote {
+    padding-left: var(--spacing-md);
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

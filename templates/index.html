@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="landing-page">
+    <div class="landing-content">
+        {# Optional profile image - hide entirely if not configured #}
+        {%- if config.extra.profile_image and config.extra.profile_image != "" %}
+        <div class="hero-image">
+            {%- set profile_img = resize_image(path=config.extra.profile_image, width=150, height=150, op="fill") %}
+            <img src="{{ profile_img.url | safe }}" 
+                 alt="Profile picture of {{ config.title }}" 
+                 width="{{ profile_img.width }}" 
+                 height="{{ profile_img.height }}">
+        </div>
+        {%- endif %}
+
+        {# Personalized greeting #}
+        {%- set first_name = config.author | split(pat=" ") | first %}
+        <div class="greeting">
+            Hello, I'm {{ first_name }}
+        </div>
+
+        {# Description text - rendered as markdown #}
+        <div class="description">
+            {{ config.extra.description | markdown | safe }}
+        </div>
+
+        {# Posts/Projects navigation links - show only if enabled #}
+        {%- set show_nav_section = config.extra.show_posts or config.extra.show_projects %}
+        {%- if show_nav_section %}
+        <nav class="nav-links" role="navigation" aria-label="Main navigation">
+            {%- if config.extra.show_posts %}
+            <a href="{{ get_url(path="posts/") | safe }}" class="nav-link" aria-label="View blog posts">
+                <span>Posts</span>
+            </a>
+            {%- endif %}
+            
+            {%- if config.extra.show_projects %}
+            <a href="{{ get_url(path="projects/") | safe }}" class="nav-link" aria-label="View projects">
+                <span>Projects</span>
+            </a>
+            {%- endif %}
+        </nav>
+        {%- endif %}
+
+        {# Social links - hide entire section if no social links configured #}
+        {%- if config.extra.social and config.extra.social | length > 0 %}
+        <div class="social-links" role="navigation" aria-label="Social media links">
+            {%- for social in config.extra.social %}
+            {%- if social.link and social.link != "" and social.name and social.name != "" and social.icon and social.icon != "" %}
+            <a href="{{ social.link | safe }}" 
+               class="social-link" 
+               aria-label="Visit {{ social.name }}">
+                <i class="bx {{ social.icon }}" aria-hidden="true"></i>
+                <span>{{ social.name }}</span>
+            </a>
+            {%- endif %}
+            {%- endfor %}
+        </div>
+        {%- endif %}
+    </div>
+</div>
+{% endblock content %}

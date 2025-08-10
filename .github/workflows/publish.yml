@@ -1,0 +1,68 @@
+name: Deploy Zola Site to GitHub Pages
+
+on:
+  # Trigger on push to main branch
+  push:
+    branches:
+      - main
+
+  # Allow manual workflow dispatch
+  workflow_dispatch:
+
+# Set GITHUB_TOKEN permissions for Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Get latest Zola release
+        id: zola
+        run: |
+          ZOLA_VERSION=$(curl -s https://api.github.com/repos/getzola/zola/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+          echo "version=$ZOLA_VERSION" >> $GITHUB_OUTPUT
+          echo "Using Zola version: $ZOLA_VERSION"
+
+      - name: Download and install Zola
+        run: |
+          curl -sL "https://github.com/getzola/zola/releases/download/v${{ steps.zola.outputs.version }}/zola-v${{ steps.zola.outputs.version }}-x86_64-unknown-linux-gnu.tar.gz" | tar xz
+          chmod +x zola
+          sudo mv zola /usr/local/bin/
+
+      - name: Build with Zola
+        run: zola build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./public
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

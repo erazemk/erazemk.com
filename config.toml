@@ -1,0 +1,46 @@
+base_url = "https://erazemk.com/"
+title = "Erazem Kokot"
+author = "Erazem Kokot"
+description = "My portfolio"
+generate_feeds = true
+
+[markdown]
+highlight_code = true
+error_on_missing_highlight = true
+lazy_async_image = true
+external_links_target_blank = true
+
+[extra]
+profile_image = "static/res/profile.jpg"
+show_posts = false
+show_projects = false
+description = """
+I'm a backend engineer, fan of [Go](https://github.com/erazemk/sicsim), [Linux](https://gitlab.com/anarchyinstaller/installer), [FPGAs](https://github.com/erazemk/nexus), and agentic systems.
+
+Currently I'm working @[DevRev](https://devrev.ai), maintaining microservices and messing around with Go, Docker and LLMs, but my CV is available on request.
+"""
+
+[[extra.social]]
+name = "Email"
+link = "mailto:hello@erazemk.com"
+icon = "bx-envelope"
+
+[[extra.social]]
+name = "GitHub"
+link = "https://github.com/erazemk"
+icon = "bxl-github"
+
+[[extra.social]]
+name = "LinkedIn"
+link = "https://www.linkedin.com/in/erazemk"
+icon = "bxl-linkedin"
+
+[[extra.social]]
+name = "Telegram"
+link = "https://t.me/erazemk"
+icon = "bxl-telegram"
+
+[[extra.social]]
+name = "PGP Key"
+link = "https://github.com/erazemk.gpg"
+icon = "bx-lock-alt"
