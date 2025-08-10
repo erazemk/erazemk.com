@@ -7,14 +7,9 @@ static/processed_images
 
 # Playwright
 node_modules/
-package.json
-package-lock.json
-
-# Playwright
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-playwright.config.ts
 tests/
 tests-examples/
